@@ -24,7 +24,7 @@ const SearchBar = ({ initialSearchQuery, onSearch }) => {
         placeholder="Search..."
         value={searchQuery}
         onChange={handleInputChange}
-        onKeyPress={handleKeyPress}
+        onKeyDown={handleKeyPress}
       />
       <button onClick={handleSearch}>Search</button>
     </div>
