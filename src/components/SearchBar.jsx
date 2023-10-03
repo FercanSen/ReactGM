@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const SearchBar = ({ initialSearchQuery, onSearch }) => {
   const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
@@ -12,7 +12,7 @@ const SearchBar = ({ initialSearchQuery, onSearch }) => {
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       onSearch(searchQuery);
     }
   };
