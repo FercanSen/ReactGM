@@ -13,9 +13,7 @@ describe("SearchBar Component", () => {
 
   it("calls the onChange prop with the proper value after clicking the Submit button", () => {
     const mockOnChange = jest.fn();
-    const { getByPlaceholderText, getByText } = render(
-      <SearchBar initialSearchQuery="" onSearch={mockOnChange} />
-    );
+    render(<SearchBar initialSearchQuery="" onSearch={mockOnChange} />);
     const inputElement = screen.getByPlaceholderText("Search...");
     const submitButton = screen.getByText("Search");
 
@@ -27,13 +25,11 @@ describe("SearchBar Component", () => {
 
   it("calls the onChange prop with the proper value after pressing the Enter key", () => {
     const mockOnChange = jest.fn();
-    const { getByPlaceholderText } = render(
-      <SearchBar initialSearchQuery="" onSearch={mockOnChange} />
-    );
+    render(<SearchBar initialSearchQuery="" onSearch={mockOnChange} />);
     const inputElement = screen.getByPlaceholderText("Search...");
 
     fireEvent.change(inputElement, { target: { value: "Test Value" } });
-    fireEvent.keyPress(inputElement, { key: "Enter", code: "Enter" });
+    fireEvent.keyDown(inputElement, { key: "Enter", code: "Enter" });
 
     expect(mockOnChange).toHaveBeenCalledWith("Test Value");
   });

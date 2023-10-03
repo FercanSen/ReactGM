@@ -1,8 +1,6 @@
 import React from "react";
 import "./MovieTile.scss";
 
-// import pulpFiction from "../../assets/pulp-fiction.png";
-
 function MovieTile({ url, movieName, releaseYear, genreList }) {
   return (
     <div className="movie-tile">

@@ -4,13 +4,13 @@ import Counter from "../components/Counter";
 
 describe("Counter Component", () => {
   it("renders initial value provided in props", () => {
-    const { getByText } = render(<Counter initialValue={5} />);
+    render(<Counter initialValue={5} />);
     const valueElement = screen.getByText("Value: 5");
     expect(valueElement).toBeInTheDocument();
   });
 
   it('clicking "decrement" button decrements the displayed value', () => {
-    const { getByText } = render(<Counter initialValue={5} />);
+    render(<Counter initialValue={5} />);
     const decrementButton = screen.getByText("Decrement");
 
     fireEvent.click(decrementButton);
@@ -20,7 +20,7 @@ describe("Counter Component", () => {
   });
 
   it('clicking "increment" button increments the displayed value', () => {
-    const { getByText } = render(<Counter initialValue={5} />);
+    render(<Counter initialValue={5} />);
     const incrementButton = screen.getByText("Increment");
 
     fireEvent.click(incrementButton);
