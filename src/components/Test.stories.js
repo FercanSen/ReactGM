@@ -1,7 +1,7 @@
 import TestingComponent from "./Test";
 
 export default {
-  title: "FeroTest/TestingComponent",
+  title: "ReactGM/TestingComponent",
   component: TestingComponent,
 };
 

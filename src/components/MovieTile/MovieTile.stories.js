@@ -3,7 +3,7 @@ import MovieTile from "./MovieTile";
 import imageUrl from "../../assets/pulp-fiction.png"
 
 export default {
-  title: "FeroTest/MovieTile",
+  title: "ReactGM/MovieTile",
   component: MovieTile,
 };
 

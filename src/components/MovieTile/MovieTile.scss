@@ -1,6 +1,9 @@
+@use "../../variables.scss";
+
 .movie-tile {
     color: white;
     width: 20rem;
+    background-color: variables.$app-background;
   
     &__image {
       display: flex;
