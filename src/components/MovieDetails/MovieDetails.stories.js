@@ -17,7 +17,7 @@ MovieDetailsExampleArgs.args = {
     name: "Pulp Fiction",
     releaseYear: "2004",
     rating: "8.9",
-    duration: "120m",
+    duration: "120",
     description: "This is a sample movie description",
   },
 };
