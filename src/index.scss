@@ -1,0 +1,41 @@
+@use "./variables.scss";
+@use "./media-queries.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;900&display=swap");
+
+body {
+  margin: 0;
+  background-color: variables.$app-background;
+}
+
+* {
+  font-family: "Montserrat";
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+}
