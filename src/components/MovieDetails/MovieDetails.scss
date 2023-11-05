@@ -1,0 +1,8 @@
+@use "../../variables.scss";
+
+.movie-details {
+  background-color: variables.$app-background;
+  display: flex;
+  color: white;
+  gap: 4rem;
+}

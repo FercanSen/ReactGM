@@ -33,9 +33,9 @@ describe("GenreList Component", () => {
   });
 
   it("calls the onChange callback with the correct genre after clicking a genre button", () => {
-    const genres = ["Action", "Adventure", "Comedy", "Drama", "Horror"];
+    const genres = ["Action", "Adventure", "Comedy", "Drama"];
     const mockOnChange = jest.fn();
-    const { getByText } = render(
+    render(
       <GenreList genres={genres} selectedGenre={null} onSelect={mockOnChange} />
     );
     const genreToSelect = "Comedy";
