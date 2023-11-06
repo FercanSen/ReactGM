@@ -24,6 +24,10 @@ function SearchBar() {
     };
   }, [windowWidth]);
 
+  const handleClick = () => {
+    console.log("Search button is clicked!");
+  };
+
   return (
     <div className="searchbar">
       <input
@@ -31,7 +35,7 @@ function SearchBar() {
         type="text"
         placeholder="What do you want to watch?"
       />
-      <button className="searchbar__button">
+      <button className="searchbar__button" onClick={handleClick}>
         {isMobile ? (
           <img
             className="searchbar__button--mobile"
