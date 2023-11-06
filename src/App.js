@@ -1,18 +1,27 @@
-import "./App.scss";
-import MovieTile from "./components/MovieTile/MovieTile";
-import pulpFictionPoster from "./assets/pulp-fiction.png";
-import MovieDetails from "./components/MovieDetails/MovieDetails";
-import SortControl from "./components/SortControl/SortControl";
+import Header from "./components/Header/Header.jsx";
+import "./styles/App.scss";
+import "./styles/add-movie-button.scss";
+// import pulpFictionPoster from "./assets/pulp-fiction.png";
+// import MovieDetails from "./components/MovieDetails/MovieDetails";
+// import MovieTile from "./components/MovieTile/MovieTile";
+// import SortControl from "./components/SortControl/SortControl";
 
 function App() {
-  const handleSortChange = (selectedOption) => {
-    console.log("SortControl is cliked!");
-    console.log(`Selected option: ${selectedOption}`);
-  };
+  // const handleSortChange = (selectedOption) => {
+  //   console.log("SortControl is cliked!");
+  //   console.log(`Selected option: ${selectedOption}`);
+  // };
 
   return (
     <div className="app">
-      <MovieTile
+      <div id="modal-root"></div>
+      <Header />
+      {/* <MovieForm
+        onSubmit={() => {
+          console.log("(onSubmit)) MovieForm is submitted");
+        }}
+      /> */}
+      {/* <MovieTile
         url={pulpFictionPoster}
         movieName={"Pulp Fiction"}
         releaseYear={"2004"}
@@ -32,7 +41,7 @@ function App() {
       <SortControl
         currentSelection="Release Date"
         onSelectChange={handleSortChange}
-      />
+      /> */}
     </div>
   );
 }
