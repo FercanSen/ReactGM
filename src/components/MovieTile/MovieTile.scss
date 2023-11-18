@@ -1,38 +1,37 @@
-@use "../../variables.scss";
+@use "../../styles/variables.scss";
 
 .movie-tile {
-    color: white;
-    width: 20rem;
-    background-color: variables.$app-background;
-  
-    &__image {
+  color: white;
+  width: 20rem;
+  background-color: variables.$app-background;
+
+  &__image {
+    display: flex;
+    object-fit: cover;
+    justify-content: center;
+  }
+
+  &__description {
+    margin: 0.5rem 0;
+    &__upper {
       display: flex;
-      object-fit: cover;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
+
+      mix-blend-mode: normal;
+      opacity: 0.7;
     }
-  
-    &__description {
-      margin: 0.5rem 0;
-      &__upper {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-  
-        mix-blend-mode: normal;
-        opacity: 0.7;
-      }
-      &__year {
-        padding: 0.25rem 0.5rem;
-        border: solid 1px;
-        border-radius: 4px;
-        text-align: center;
-        box-sizing: border-box;
-      }
-      &__genres {
-        font-size: 14px;
-        mix-blend-mode: normal;
-        opacity: 0.5;
-      }
+    &__year {
+      padding: 0.25rem 0.5rem;
+      border: solid 1px;
+      border-radius: 4px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    &__genres {
+      font-size: 14px;
+      mix-blend-mode: normal;
+      opacity: 0.5;
     }
   }
-  
+}

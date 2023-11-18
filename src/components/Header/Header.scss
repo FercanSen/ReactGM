@@ -1,0 +1,41 @@
+@use "src/styles/variables.scss";
+@use "src/styles/media-queries.scss";
+
+.header {
+  color: variables.$app-white;
+  height: 20rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__background {
+    background: url("../../assets/header-background.png");
+    background-color: variables.$app-background;
+  }
+
+  &__main {
+    display: flex;
+    justify-content: center;
+
+    &--column {
+      display: flex;
+      flex-direction: column;
+      width: 75%;
+      gap: 3.1rem;
+      font-family: "Montserrat";
+      font-weight: 300;
+      font-size: 40px;
+
+      @media (min-width: media-queries.$tablet-min) and (max-width: media-queries.$tablet-max) {
+        align-items: center;
+      }
+
+      @media screen and (max-width: media-queries.$mobile-max) {
+        width: 90%;
+        font-size: 25px;
+        align-items: center;
+      }
+    }
+  }
+}
