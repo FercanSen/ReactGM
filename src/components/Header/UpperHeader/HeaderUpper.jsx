@@ -20,8 +20,6 @@ function HeaderUpper() {
       <button className="add-movie-button" onClick={openModal}>
         + ADD MOVIE
       </button>
-      {/* <button onClick={openModal}>Open Modal</button> */}
-      {/* <div id="modal-root"></div> */}
       {isModalOpen && (
         <Dialog title="Modal Title" onClose={closeModal}>
           <p>This is some custom content for your modal.</p>
