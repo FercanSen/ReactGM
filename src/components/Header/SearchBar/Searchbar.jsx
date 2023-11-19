@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import searhButtonIcon from "../../../assets/search.png";
 import "./SearchBar.scss";
 
-function SearchBar() {
+function SearchBar({ onClick }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isMobile, setIsMobile] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     if (windowWidth <= 640) {
@@ -25,7 +26,11 @@ function SearchBar() {
   }, [windowWidth]);
 
   const handleClick = () => {
-    console.log("Search button is clicked!");
+    onClick(searchQuery); // Trigger the search functionality in the parent component
+  };
+
+  const handleChange = (e) => {
+    setSearchQuery(e.target.value);
   };
 
   return (
@@ -34,6 +39,8 @@ function SearchBar() {
         className="searchbar__input"
         type="text"
         placeholder="What do you want to watch?"
+        value={searchQuery}
+        onChange={handleChange}
       />
       <button className="searchbar__button" onClick={handleClick}>
         {isMobile ? (
