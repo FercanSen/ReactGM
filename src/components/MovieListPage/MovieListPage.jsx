@@ -4,37 +4,52 @@ import MovieTile from "../MovieTile/MovieTile";
 
 import GenreSelect from "../GenreSelect";
 import SearchBar from "../Header/SearchBar/Searchbar";
+import MovieDetails from "../MovieDetails/MovieDetails";
 import SortControl from "../SortControl/SortControl";
 import "./MovieListPage.scss";
 
 function MovieListPage() {
-  const [sortCriterion, setSortCriterion] = useState("Release Date");
+  const [sortCriterion, setSortCriterion] = useState("Title");
   const [activeGenre, setActiveGenre] = useState("");
   const [movieList, setMovieList] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
-
   const [genreList, setGenreList] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        // Fetch Movies
         const response = await axios.get("http://localhost:4000/movies");
         setMovieList(response.data.data);
 
-        // Fetch Genres
-        const genres = response.data.data.map((movie) => movie.genres).flat(); // Extract genres
-        const uniqueGenres = Array.from(new Set(genres)); // Get unique genres
-
+        const genres = response.data.data.map((movie) => movie.genres).flat();
+        const uniqueGenres = Array.from(new Set(genres));
         setGenreList(uniqueGenres);
       } catch (error) {
-        console.error("Error ocurred fetching movies:", error);
+        console.error("Error occurred fetching movies:", error);
       }
     };
 
     fetchMovies();
-  }, []);
+  }, [sortCriterion, activeGenre]);
+
+  useEffect(() => {
+    let filtered = [...movieList];
+
+    if (activeGenre) {
+      filtered = filtered.filter((movie) => movie.genres.includes(activeGenre));
+    }
+
+    if (sortCriterion === "Release Date") {
+      filtered.sort(
+        (a, b) => new Date(a.release_date) - new Date(b.release_date)
+      );
+    } else if (sortCriterion === "Title") {
+      filtered.sort((a, b) => a.title.localeCompare(b.title));
+    }
+
+    setFilteredMovies(filtered);
+  }, [movieList, activeGenre, sortCriterion]);
 
   const handleSortChange = (selectedOption) => {
     setSortCriterion(selectedOption);
@@ -57,18 +72,33 @@ function MovieListPage() {
     setFilteredMovies(matchingMovies);
   };
 
+  console.log(selectedMovie);
+
   return (
     <>
-      <SearchBar onClick={handleSearch} />
-      <SortControl
-        currentSelection={sortCriterion}
-        onSelectChange={handleSortChange}
-      />
-      <GenreSelect
-        genres={genreList}
-        selectedGenre={activeGenre}
-        onSelect={handleGenreSelect}
-      />
+      {selectedMovie ? (
+        <MovieDetails
+          movie={selectedMovie}
+          setSelectedMovie={setSelectedMovie}
+        />
+      ) : (
+        <div className="searchbar">
+          <SearchBar onClick={handleSearch} />
+        </div>
+      )}
+
+      <div className="genre-sort">
+        <GenreSelect
+          genres={genreList}
+          selectedGenre={activeGenre}
+          onSelect={handleGenreSelect}
+        />
+        <SortControl
+          currentSelection={sortCriterion}
+          onSelectChange={handleSortChange}
+        />
+      </div>
+
       <div className="movie-grid">
         {filteredMovies.length > 0
           ? filteredMovies.map((movie) => (

@@ -6,16 +6,12 @@ import "./styles/add-movie-button.scss";
 // import SortControl from "./components/SortControl/SortControl";
 
 function App() {
-  // const handleSortChange = (selectedOption) => {
-  //   console.log("SortControl is cliked!");
-  //   console.log(`Selected option: ${selectedOption}`);
-  // };
-
   return (
     <div className="app">
       <div id="modal-root"></div>
       <Header />
       <MovieListPage />
+
       {/* <MovieForm
         onSubmit={() => {
           console.log("(onSubmit)) MovieForm is submitted");
@@ -32,10 +28,6 @@ function App() {
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet sapien tristique ipsum luctus tincidunt. Praesent ipsum urna, consectetur vitae tempus ac, efficitur eu elit. Fusce vel leo bibendum, euismod nulla placerat, scelerisque lorem. Proin vulputate interdum ligula vitae convallis. Nullam efficitur justo et nibh semper, ac molestie magna bibendum. Sed iaculis rhoncus ligula ut faucibus. Praesent tristique efficitur purus, auctor pellentesque turpis. Integer bibendum nisi sit amet neque placerat facilisis. Morbi scelerisque venenatis felis, a tempor sem rhoncus tincidunt. Ut lacus est, convallis gravida elementum efficitur, malesuada ac nibh. Mauris et lectus et tortor aliquam pretium eget sed neque. Vivamus et eros ornare, ultricies justo vel, rutrum ex. Ut eget augue sed quam interdum mattis.",
         }}
-      />
-      <SortControl
-        currentSelection="Release Date"
-        onSelectChange={handleSortChange}
       /> */}
     </div>
   );

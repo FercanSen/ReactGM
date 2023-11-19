@@ -2,23 +2,38 @@ import React from "react";
 
 import "./MovieDetails.scss";
 
-const MovieDetails = ({ movie }) => {
+const MovieDetails = ({ movie, setSelectedMovie }) => {
   // Take movie as an object and destruct movie object to extract details
-  const { imageUrl, name, releaseYear, rating, duration, description } =
-    movie;
-  console.log("This is the move: ");
+  const {
+    title,
+    tagline,
+    vote_average,
+    vote_count,
+    release_date,
+    poster_path,
+    overview,
+    budget,
+    revenue,
+    runtime,
+    genres,
+    id,
+  } = movie;
+  console.log("This is the selected movie: ");
   console.log(movie);
   return (
     <div className="movie-details">
       <div className="movie-poster">
-        <img src={imageUrl} alt={name} />
+        <img src={poster_path} alt={title} />
       </div>
       <div className="movie-info">
-        <h2>{name}</h2>
-        <p>Release Year: {releaseYear}</p>
-        <p>Rating: {rating}</p>
-        <p>Duration: {duration} minutes</p>
-        <p>Description: {description}</p>
+        <div className="movie-titlebar">
+          <h2>{title}</h2>
+          <button onClick={() => setSelectedMovie(null)}>Back to search</button>
+        </div>
+        <p>Release Year: {release_date}</p>
+        <p>Rating: {vote_average}</p>
+        <p>Duration: {runtime} minutes</p>
+        <p>Description: {overview}</p>
       </div>
     </div>
   );
