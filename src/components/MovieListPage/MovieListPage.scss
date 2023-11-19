@@ -1,0 +1,14 @@
+.movie-grid {
+  display: grid;
+  gap: 20px;
+  padding: 1rem;
+  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(500px, max-content));
+}
+
+.genre-sort {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}

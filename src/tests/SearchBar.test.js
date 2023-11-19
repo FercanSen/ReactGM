@@ -1,6 +1,6 @@
+import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
-import { screen, render, fireEvent } from "@testing-library/react";
-import SearchBar from "../components/SearchBar";
+import SearchBar from "../components/Header/SearchBar/Searchbar.jsx";
 
 describe("SearchBar Component", () => {
   it("renders an input with the value equal to the initial value passed in props", () => {
