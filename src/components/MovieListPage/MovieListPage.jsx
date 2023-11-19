@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import pulpFictionPoster from "../../assets/pulp-fiction.png";
 import MovieTile from "../MovieTile/MovieTile";
 
 import "./MovieListPage.scss";
@@ -34,7 +33,7 @@ function MovieListPage() {
           key={movie.id}
           movieName={movie.title}
           url={movie.poster_path}
-          releaseYear={movie.release_date}
+          releaseYear={movie.release_date.split("-")[0]}
           genreList={movie.genres.join(", ")}
         />
       ))}
