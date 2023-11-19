@@ -2,17 +2,19 @@
 
 .movie-tile {
   color: white;
-  width: 20rem;
+  border-radius: 10px;
   background-color: variables.$app-background;
 
   &__image {
     display: flex;
     object-fit: cover;
     justify-content: center;
+    overflow: hidden;
+    border-radius: 10px;
   }
 
   &__description {
-    margin: 0.5rem 0;
+    padding: 0.5rem 0.5rem;
     &__upper {
       display: flex;
       justify-content: space-between;

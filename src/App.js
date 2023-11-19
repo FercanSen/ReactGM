@@ -1,9 +1,8 @@
 import Header from "./components/Header/Header.jsx";
+import MovieListPage from "./components/MovieListPage/MovieListPage.jsx";
 import "./styles/App.scss";
 import "./styles/add-movie-button.scss";
-// import pulpFictionPoster from "./assets/pulp-fiction.png";
 // import MovieDetails from "./components/MovieDetails/MovieDetails";
-// import MovieTile from "./components/MovieTile/MovieTile";
 // import SortControl from "./components/SortControl/SortControl";
 
 function App() {
@@ -16,18 +15,14 @@ function App() {
     <div className="app">
       <div id="modal-root"></div>
       <Header />
+      <MovieListPage />
       {/* <MovieForm
         onSubmit={() => {
           console.log("(onSubmit)) MovieForm is submitted");
         }}
       /> */}
-      {/* <MovieTile
-        url={pulpFictionPoster}
-        movieName={"Pulp Fiction"}
-        releaseYear={"2004"}
-        genreList={"Action & Adventure"}
-      />
-      <MovieDetails
+
+      {/* <MovieDetails
         movie={{
           imageUrl: pulpFictionPoster,
           name: "Pulp Fiction",
