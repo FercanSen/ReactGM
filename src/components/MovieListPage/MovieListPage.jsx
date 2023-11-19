@@ -2,11 +2,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import MovieTile from "../MovieTile/MovieTile";
 
+import SortControl from "../SortControl/SortControl";
 import "./MovieListPage.scss";
 
 function MovieListPage() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [sortCriterion, setSortCriterion] = useState("");
+  //   const [searchQuery, setSearchQuery] = useState("");
+  const [sortCriterion, setSortCriterion] = useState("Release Date");
   const [activeGenre, setActiveGenre] = useState("");
   const [movieList, setMovieList] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -24,6 +25,10 @@ function MovieListPage() {
     fetchData();
   }, []);
 
+  const handleSortChange = (selectedOption) => {
+    setSortCriterion(selectedOption);
+  };
+
   const handleMovieClick = (movie) => {
     setSelectedMovie(movie);
     console.log("Selected movie:", movie);
@@ -31,6 +36,10 @@ function MovieListPage() {
 
   return (
     <>
+      <SortControl
+        currentSelection={sortCriterion}
+        onSelectChange={handleSortChange}
+      />
       <div className="movie-grid">
         {movieList.map((movie) => (
           <MovieTile
