@@ -23,8 +23,6 @@ const MovieForm = ({ initialMovieInfo, onSubmit }) => {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("movieInfo: ");
-    console.log(movieInfo);
     onSubmit(movieInfo);
   };
 

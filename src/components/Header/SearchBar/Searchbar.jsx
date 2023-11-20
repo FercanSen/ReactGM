@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import searhButtonIcon from "../../../assets/search.png";
 import "./SearchBar.scss";
 
-function SearchBar({ onClick }) {
+function SearchBar({ searchQuery, setSearchQuery, onClick }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isMobile, setIsMobile] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     if (windowWidth <= 640) {

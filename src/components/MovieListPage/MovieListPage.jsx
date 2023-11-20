@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import MovieTile from "../MovieTile/MovieTile";
 
+import { Outlet, useNavigate, useSearchParams } from "react-router-dom";
 import GenreSelect from "../GenreSelect";
 import SearchBar from "../Header/SearchBar/Searchbar";
 import MovieDetails from "../MovieDetails/MovieDetails";
@@ -9,14 +10,42 @@ import SortControl from "../SortControl/SortControl";
 import "./MovieListPage.scss";
 
 function MovieListPage() {
+  const navigate = useNavigate();
   const [sortCriterion, setSortCriterion] = useState("Title");
   const [activeGenre, setActiveGenre] = useState("");
   const [movieList, setMovieList] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [genreList, setGenreList] = useState([]);
-  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [sortedFilms, setSortedFilms] = useState([]);
+  const [searchedFilms, setSearchedFilms] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const queryParam = searchParams.get("query") || "";
+  const sortByParam = searchParams.get("sortBy") || "";
+  const genreParam = searchParams.get("genre") || "";
 
   useEffect(() => {
+    setSearchQuery(queryParam);
+    setSortCriterion(sortByParam);
+    setActiveGenre(genreParam);
+  }, [queryParam, sortByParam, genreParam]);
+
+  useEffect(() => {
+    if (queryParam) {
+      const matchingMovies = movieList.filter((movie) =>
+        movie.title.toLowerCase().includes(queryParam.toLowerCase())
+      );
+      setSearchedFilms(matchingMovies);
+    } else {
+      // Reset searched movies if no query is provided
+      setSearchedFilms(movieList);
+    }
+  }, [queryParam, movieList]);
+
+  useEffect(() => {
+    // Fetch Movies
     const fetchMovies = async () => {
       try {
         const response = await axios.get("http://localhost:4000/movies");
@@ -31,51 +60,57 @@ function MovieListPage() {
     };
 
     fetchMovies();
-  }, [sortCriterion, activeGenre]);
+  }, []);
 
   useEffect(() => {
-    let filtered = [...movieList];
+    // Sort films
+    let sorted = [...movieList];
 
     if (activeGenre) {
-      filtered = filtered.filter((movie) => movie.genres.includes(activeGenre));
+      sorted = sorted.filter((movie) => movie.genres.includes(activeGenre));
     }
 
     if (sortCriterion === "Release Date") {
-      filtered.sort(
+      sorted.sort(
         (a, b) => new Date(a.release_date) - new Date(b.release_date)
       );
     } else if (sortCriterion === "Title") {
-      filtered.sort((a, b) => a.title.localeCompare(b.title));
+      sorted.sort((a, b) => a.title.localeCompare(b.title));
     }
 
-    setFilteredMovies(filtered);
+    setSortedFilms(sorted);
   }, [movieList, activeGenre, sortCriterion]);
 
   const handleSortChange = (selectedOption) => {
     setSortCriterion(selectedOption);
+    setSearchParams({ sortBy: selectedOption });
   };
 
   const handleMovieClick = (movie) => {
     setSelectedMovie(movie);
     console.log("Selected movie:", movie);
+    navigate(`/${movie.id}`, { replace: true });
   };
 
   const handleGenreSelect = (genre) => {
     setActiveGenre(genre);
+    setSearchParams({ genre: genre });
   };
 
   const handleSearch = (searchValue) => {
-    console.log(searchValue);
+    console.log("Searched value:", searchValue);
+    console.log("queryParam");
+    console.log(queryParam);
+    setSearchParams({ query: searchValue });
     const matchingMovies = movieList.filter((movie) =>
       movie.title.toLowerCase().includes(searchValue.toLowerCase())
     );
-    setFilteredMovies(matchingMovies);
+    setSortedFilms(matchingMovies);
   };
-
-  console.log(selectedMovie);
 
   return (
     <>
+      {/* <Outlet /> */}
       {selectedMovie ? (
         <MovieDetails
           movie={selectedMovie}
@@ -83,7 +118,11 @@ function MovieListPage() {
         />
       ) : (
         <div className="searchbar">
-          <SearchBar onClick={handleSearch} />
+          <SearchBar
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            onClick={handleSearch}
+          />
         </div>
       )}
 
@@ -100,8 +139,19 @@ function MovieListPage() {
       </div>
 
       <div className="movie-grid">
-        {filteredMovies.length > 0
-          ? filteredMovies.map((movie) => (
+        {queryParam
+          ? searchedFilms.map((movie) => (
+              <MovieTile
+                key={movie.id}
+                movieName={movie.title}
+                url={movie.poster_path}
+                releaseYear={movie.release_date.split("-")[0]}
+                genreList={movie.genres.join(", ")}
+                onClick={() => handleMovieClick(movie)}
+              />
+            ))
+          : sortedFilms.length > 0
+          ? sortedFilms.map((movie) => (
               <MovieTile
                 key={movie.id}
                 movieName={movie.title}
