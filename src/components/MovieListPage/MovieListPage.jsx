@@ -4,6 +4,7 @@ import MovieTile from "../MovieTile/MovieTile";
 
 import { Outlet, useNavigate, useSearchParams } from "react-router-dom";
 import GenreSelect from "../GenreSelect";
+import Header from "../Header/Header";
 import SearchBar from "../Header/SearchBar/Searchbar";
 import MovieDetails from "../MovieDetails/MovieDetails";
 import SortControl from "../SortControl/SortControl";
@@ -111,19 +112,22 @@ function MovieListPage() {
   return (
     <>
       {/* <Outlet /> */}
+      {/* <Header
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        onClick={handleSearch}
+      /> */}
       {selectedMovie ? (
         <MovieDetails
           movie={selectedMovie}
           setSelectedMovie={setSelectedMovie}
         />
       ) : (
-        <div className="searchbar">
-          <SearchBar
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-            onClick={handleSearch}
-          />
-        </div>
+        <Header
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          onClick={handleSearch}
+        />
       )}
 
       <div className="genre-sort">
