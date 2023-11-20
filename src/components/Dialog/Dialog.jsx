@@ -21,16 +21,6 @@ const Modal = ({ title, children, onClose }) => {
 };
 
 const Dialog = ({ title, children, onClose }) => {
-  useEffect(() => {
-    const modalRoot = document.getElementById("modal-root");
-    const modalElement = document.createElement("div");
-    modalRoot.appendChild(modalElement);
-
-    return () => {
-      modalRoot.removeChild(modalElement);
-    };
-  }, []);
-
   return createPortal(
     <FocusTrap>
       <Modal title={title} onClose={onClose}>

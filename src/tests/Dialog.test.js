@@ -43,7 +43,7 @@ describe("Dialog component", () => {
       </Dialog>
     );
 
-    const closeButton = screen.getByRole("button", { name: /close/i });
+    const closeButton = screen.getByRole("button", { name: /&times/i });
     fireEvent.click(closeButton);
 
     expect(handleClose).toHaveBeenCalled();
