@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AddMovieForm from "../../AddMovieForm/AddMovieForm";
 import AppLogo from "../../AppLogo/AppLogo";
 import Dialog from "../../Dialog/Dialog";
 import "./HeaderUpper.scss";
@@ -21,8 +22,12 @@ function HeaderUpper() {
         + ADD MOVIE
       </button>
       {isModalOpen && (
-        <Dialog title="Modal Title" onClose={closeModal}>
-          <p>This is some custom content for your modal.</p>
+        <Dialog
+          title="Add Movie"
+          children={<AddMovieForm />}
+          onClose={closeModal}
+        >
+          <AddMovieForm />
         </Dialog>
       )}
     </div>

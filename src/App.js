@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AddMovieForm from "./components/AddMovieForm/AddMovieForm.jsx";
 import Header from "./components/Header/Header.jsx";
 import SearchBar from "./components/Header/SearchBar/Searchbar.jsx";
 import MovieDetailsWrapper from "./components/MovieDetailsWrapper/MovieDetailsWrapper.jsx";
@@ -10,12 +11,12 @@ function App() {
   return (
     <div className="app">
       <div id="modal-root"></div>
-      <Header />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MovieListPage />}>
-            <Route index element={<SearchBar />} />
+            <Route index element={<Header />} />
             <Route path=":movieId" element={<MovieDetailsWrapper />} />
+            <Route path="new" element={<AddMovieForm />} />
           </Route>
         </Routes>
       </BrowserRouter>
