@@ -10,11 +10,10 @@ function App() {
   return (
     <div className="app">
       <div id="modal-root"></div>
-      <Header />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MovieListPage />}>
-            <Route index element={<SearchBar />} />
+            <Route index element={<Header />} />
             <Route path=":movieId" element={<MovieDetailsWrapper />} />
           </Route>
         </Routes>
