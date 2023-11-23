@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./MovieDetails.scss";
 
-const MovieDetails = ({ movie, setSelectedMovie }) => {
+const MovieDetails = ({ movie }) => {
   // Take movie as an object and destruct movie object to extract details
   const {
     title,
@@ -33,7 +33,6 @@ const MovieDetails = ({ movie, setSelectedMovie }) => {
           <button
             onClick={() => {
               navigate("/", { replace: true });
-              setSelectedMovie(null);
             }}
           >
             Back to search
