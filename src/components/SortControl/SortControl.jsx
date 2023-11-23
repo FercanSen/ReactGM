@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+
+import "./SortControl.scss";
 
 function SortControl({ currentSelection, onSelectChange }) {
   const [selectedOption, setSelectedOption] = useState(currentSelection);
@@ -11,12 +13,10 @@ function SortControl({ currentSelection, onSelectChange }) {
 
   return (
     <div>
-      <label htmlFor="sortBy">Sort by:</label>
-      <select
-        id="sortBy"
-        value={selectedOption}
-        onChange={handleSelectChange}
-      >
+      <label className="sort-control" htmlFor="sortBy">
+        Sort by:
+      </label>
+      <select id="sortBy" value={selectedOption} onChange={handleSelectChange}>
         <option value="Release Date">Release Date</option>
         <option value="Title">Title</option>
       </select>

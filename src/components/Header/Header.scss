@@ -1,0 +1,117 @@
+@use "src/styles/variables.scss";
+@use "src/styles/media-queries.scss";
+
+.header {
+  color: variables.$app-white;
+  height: 20rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__background {
+    background: url("../../assets/header-background.png");
+    background-color: variables.$app-background;
+  }
+
+  &__main {
+    display: flex;
+    justify-content: center;
+
+    &--column {
+      display: flex;
+      flex-direction: column;
+      width: 75%;
+      gap: 3.1rem;
+      font-family: "Montserrat";
+      font-weight: 300;
+      font-size: 40px;
+
+      @media (min-width: media-queries.$tablet-min) and (max-width: media-queries.$tablet-max) {
+        align-items: center;
+      }
+
+      @media screen and (max-width: media-queries.$mobile-max) {
+        width: 90%;
+        font-size: 25px;
+        align-items: center;
+      }
+    }
+  }
+}
+
+.header-upper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5rem;
+
+  @media screen and (max-width: media-queries.$mobile-max) {
+    padding: 1rem 1rem;
+  }
+}
+
+.add-movie-button {
+  background-color: rgba(96, 96, 96, 0.5);
+  border: none;
+  border-radius: 4px;
+  color: variables.$primary-color;
+
+  font-family: "Montserrat";
+  font-weight: 600;
+  font-size: 20px;
+  padding: 11px 18px;
+
+  @media screen and (max-width: media-queries.$mobile-max) {
+    font-size: 15px;
+  }
+}
+
+.searchbar {
+  width: 75%;
+  display: flex;
+  gap: 1rem;
+
+  @media screen and (max-width: media-queries.$mobile-max) {
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  &__input {
+    width: 100%;
+    background: rgba(70, 70, 70, 0.9);
+    mix-blend-mode: normal;
+    opacity: 0.7;
+    padding: 1rem;
+    border: none;
+    border-radius: 4px;
+    color: white;
+  }
+  :focus {
+    outline: 1px solid variables.$primary-color;
+  }
+  ::placeholder {
+    color: white;
+  }
+
+  &__button {
+    background-color: variables.$primary-color;
+    border: none;
+    border-radius: 4px;
+    width: 10rem;
+
+    color: variables.$app-white;
+    font-weight: 500;
+    font-size: 20px;
+
+    @media screen and (max-width: media-queries.$mobile-max) {
+      width: 5rem;
+
+      &--mobile {
+        filter: brightness(0) invert(1); // Make black png white
+        max-width: 50%;
+        max-height: 50%;
+      }
+    }
+  }
+}
