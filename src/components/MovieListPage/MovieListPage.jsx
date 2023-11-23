@@ -83,8 +83,10 @@ function MovieListPage() {
   }, [movieList, activeGenre, sortCriterion]);
 
   const handleSortChange = (selectedOption) => {
+    const newSearchParams = new URLSearchParams(searchParams);
+    newSearchParams.set("sortBy", selectedOption);
     setSortCriterion(selectedOption);
-    setSearchParams({ sortBy: selectedOption });
+    setSearchParams(newSearchParams.toString());
   };
 
   const handleMovieClick = (movie) => {
@@ -94,15 +96,22 @@ function MovieListPage() {
   };
 
   const handleGenreSelect = (genre) => {
+    const newSearchParams = new URLSearchParams(searchParams);
+    newSearchParams.set("genre", genre);
     setActiveGenre(genre);
-    setSearchParams({ genre: genre });
+    setSearchParams(newSearchParams.toString());
   };
 
   const handleSearch = (searchValue) => {
+    const newSearchParams = new URLSearchParams(searchParams);
+
+    newSearchParams.set("query", searchValue);
+
     console.log("Searched value:", searchValue);
     console.log("queryParam");
     console.log(queryParam);
-    setSearchParams({ query: searchValue });
+    // setSearchParams({ query: searchValue });
+    setSearchParams(newSearchParams.toString());
     const matchingMovies = movieList.filter((movie) =>
       movie.title.toLowerCase().includes(searchValue.toLowerCase())
     );
