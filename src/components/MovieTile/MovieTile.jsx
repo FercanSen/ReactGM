@@ -1,9 +1,9 @@
 import React from "react";
 import "./MovieTile.scss";
 
-function MovieTile({ url, movieName, releaseYear, genreList }) {
+function MovieTile({ url, movieName, releaseYear, genreList, onClick }) {
   return (
-    <div className="movie-tile">
+    <div className="movie-tile" onClick={onClick}>
       <div className="movie-tile__image">
         <img src={url} alt="film-poster" />
       </div>
