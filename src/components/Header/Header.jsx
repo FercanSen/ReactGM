@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import searhButtonIcon from "../../assets/search.png";
-import AddMovieForm from "../AddMovieForm/AddMovieForm";
+import AddMovieForm from "../AddMovieForm/page";
 import AppLogo from "../AppLogo/AppLogo";
 import Dialog from "../Dialog/Dialog";
-import "./Header.scss";
+// import "./Header.scss";
 
 function Header({ searchQuery, setSearchQuery, onClick }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  // const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isMobile, setIsMobile] = useState(false);
 
   const openModal = () => {
@@ -18,23 +18,23 @@ function Header({ searchQuery, setSearchQuery, onClick }) {
     setIsModalOpen(false);
   };
 
-  useEffect(() => {
-    if (windowWidth <= 640) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
+  // useEffect(() => {
+  //   if (windowWidth <= 640) {
+  //     setIsMobile(true);
+  //   } else {
+  //     setIsMobile(false);
+  //   }
 
-    window.addEventListener("resize", () => {
-      setWindowWidth(window.innerWidth);
-    });
+  //   window.addEventListener("resize", () => {
+  //     setWindowWidth(window.innerWidth);
+  //   });
 
-    return () => {
-      window.removeEventListener("resize", () => {
-        setWindowWidth(window.innerWidth);
-      });
-    };
-  }, [windowWidth]);
+  //   return () => {
+  //     window.removeEventListener("resize", () => {
+  //       setWindowWidth(window.innerWidth);
+  //     });
+  //   };
+  // }, [windowWidth]);
 
   const handleClick = () => {
     onClick(searchQuery);

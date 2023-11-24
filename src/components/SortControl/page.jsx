@@ -1,6 +1,7 @@
+"use client";
 import React, { useState } from "react";
 
-import "./SortControl.scss";
+// import "./SortControl.scss";
 
 function SortControl({ currentSelection, onSelectChange }) {
   const [selectedOption, setSelectedOption] = useState(currentSelection);

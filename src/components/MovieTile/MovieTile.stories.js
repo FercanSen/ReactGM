@@ -1,6 +1,6 @@
-import MovieTile from "./MovieTile";
+import MovieTile from "./page";
 
-import imageUrl from "../../assets/pulp-fiction.png"
+import imageUrl from "../../assets/pulp-fiction.png";
 
 export default {
   title: "ReactGM/MovieTile",

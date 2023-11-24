@@ -1,8 +1,9 @@
 import React from "react";
 
+// import { useNavigate } from "react-router-dom";
 import "./MovieDetails.scss";
 
-const MovieDetails = ({ movie, setSelectedMovie }) => {
+const MovieDetails = ({ movie }) => {
   // Take movie as an object and destruct movie object to extract details
   const {
     title,
@@ -18,8 +19,9 @@ const MovieDetails = ({ movie, setSelectedMovie }) => {
     genres,
     id,
   } = movie;
-  console.log("This is the selected movie: ");
-  console.log(movie);
+
+  // const navigate = useNavigate();
+
   return (
     <div className="movie-details">
       <div className="movie-poster">
@@ -28,7 +30,13 @@ const MovieDetails = ({ movie, setSelectedMovie }) => {
       <div className="movie-info">
         <div className="movie-titlebar">
           <h2>{title}</h2>
-          <button onClick={() => setSelectedMovie(null)}>Back to search</button>
+          <button
+            onClick={() => {
+              // navigate("/", { replace: true });
+            }}
+          >
+            Back to search
+          </button>
         </div>
         <p>Release Year: {release_date}</p>
         <p>Rating: {vote_average}</p>

@@ -1,5 +1,5 @@
 import React from "react";
-import "./MovieTile.scss";
+// import "./MovieTile.scss";
 
 function MovieTile({ url, movieName, releaseYear, genreList, onClick }) {
   return (

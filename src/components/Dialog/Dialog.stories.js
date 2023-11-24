@@ -1,7 +1,7 @@
 import { action } from "@storybook/addon-actions";
 import React from "react";
 import MovieForm from "../MovieForm/MovieForm.jsx";
-import Dialog from "./Dialog";
+import Dialog from "./Dialog.jsx.jssx";
 
 export default {
   title: "ReactGM/Dialog",

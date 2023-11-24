@@ -1,5 +1,5 @@
 import React from "react";
-import "./AppLogo.scss";
+// import "./AppLogo.scss";
 
 function AppLogo() {
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AddMovieForm from "../../AddMovieForm/AddMovieForm";
+import AddMovieForm from "../../AddMovieForm/page";
 import AppLogo from "../../AppLogo/AppLogo";
 import Dialog from "../../Dialog/Dialog";
 import "./HeaderUpper.scss";
