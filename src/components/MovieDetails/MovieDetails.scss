@@ -1,8 +1,14 @@
-@use "../../variables.scss";
+@use "../../styles/variables.scss";
 
 .movie-details {
   background-color: variables.$app-background;
   display: flex;
   color: white;
   gap: 4rem;
+}
+.movie-titlebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 1rem;
 }

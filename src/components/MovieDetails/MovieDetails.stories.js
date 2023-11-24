@@ -1,4 +1,4 @@
-import MovieDetails from "./MovieDetails";
+import MovieDetails from "./page";
 
 import imageUrl from "../../assets/pulp-fiction.png";
 

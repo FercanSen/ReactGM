@@ -1,0 +1,10 @@
+@use "../../styles/variables.scss";
+
+.logo {
+  color: variables.$primary-color;
+  font-weight: 900;
+  font-size: 20px;
+  &--thin {
+    font-weight: 400;
+  }
+}
